@@ -1,0 +1,31 @@
+datasets:
+  semicon:
+    column_mapping:
+      numerical_features:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '7'
+        - '8'
+        - '9'
+      target: 'Pass/Fail'
+      prediction: 'prediction'
+      task: 'classification'
+    data_format:
+      header: true
+      separator: ','
+    monitors:
+      - cat_target_drift
+      - classification_performance
+    reference_file: ../../datasets/sample_test_data.csv
+service:
+  calculation_period_sec: 2
+  min_reference_size: 10
+  moving_reference: false
+  datasets_path: datasets
+  use_reference: true
+  window_size: 5
